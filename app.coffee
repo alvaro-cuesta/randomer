@@ -24,12 +24,24 @@ make = (req, res) ->
 # Express
 
 express = require('express')
+stylus = require('stylus')
+nib = require('nib')
+
 app = express()
 
 app.set 'title', 'R&aacute;ndomer'
 app.set 'view engine', 'blade'
 
 app.use express.logger()
+app.use stylus.middleware
+  src: __dirname + '/views',
+  dest: __dirname + '/static',
+  compile: (str, path) ->
+    stylus(str)
+      .set('filename', path)
+      .set('compress', true)
+      .use(nib())
+      .import('nib')
 app.use express.static(__dirname + '/static')
 
 params = require('express-params')
