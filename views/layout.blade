@@ -1,0 +1,14 @@
+!!! 5
+html
+  head
+    block title(text)
+      - if(text == undefined)
+        title R&aacute;ndomer
+      - else 
+        title R&aacute;ndomer - #{text}
+  body
+    #header
+      block header
+        h1 R&aacute;ndomer
+    #content
+      block content

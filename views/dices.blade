@@ -1,0 +1,13 @@
+include "layout.blade"
+
+render title("#{num}d#{faces}")
+
+append block header
+  h2 #{num}d#{faces}
+
+replace block content
+  ul.dices
+    foreach dices as value
+      li.value
+        a.dice= value
+  a.sum= sum
