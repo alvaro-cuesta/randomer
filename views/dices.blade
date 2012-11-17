@@ -6,8 +6,17 @@ append block header
   h2 #{num}d#{faces}
 
 replace block content
+  form
+    input(type='text', value=num, id="num")
+    | d
+    input(type='text', value=faces, id="faces")
+    input(type='submit', value='Throw!')
+    {submit}
+      document.location.href = $('#num').val() + "d" + $('#faces').val()
+      e.preventDefault();
   ul.dices
     foreach dices as value
       li.value
         a.dice= value
+  | =
   a.sum= sum

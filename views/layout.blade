@@ -4,13 +4,15 @@ html
     block title(text)
       - if(text == undefined)
         title R&aacute;ndomer
-      - else 
+      - else
         title R&aacute;ndomer - #{text}
     link(href='/stylesheets/html5-reset.css', rel='stylesheet')
     link(href='/stylesheets/layout.css', rel='stylesheet')
   body
-    #header
+    #content
       block header
         h1 R&aacute;ndomer
-    #content
       block content
+    script(type='text/javascript', src='http://code.jquery.com/jquery-1.8.2.min.js')
+    script(type='text/javascript', src='/blade/blade.js')
+    script(type='text/javascript', src='/blade/plugins/liveui.js')

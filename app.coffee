@@ -5,7 +5,7 @@ rand = (max) -> Math.ceil(Math.random()*max)
 generateDiceArray = (faces, num=1) ->
   console.log "#{num}d#{faces}"
   rand(faces) for i in [1..num]
-  
+
 make = (req, res) ->
   dices = generateDiceArray(
     parseInt(req.params.faces),
@@ -24,6 +24,7 @@ make = (req, res) ->
 # Express
 
 express = require('express')
+blade = require('blade')
 stylus = require('stylus')
 nib = require('nib')
 
@@ -33,6 +34,7 @@ app.set 'title', 'R&aacute;ndomer'
 app.set 'view engine', 'blade'
 
 app.use express.logger()
+app.use blade.middleware(__dirname + '/views')
 app.use stylus.middleware
   src: __dirname + '/views',
   dest: __dirname + '/static',
